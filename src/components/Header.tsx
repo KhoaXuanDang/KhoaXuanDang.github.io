@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, Moon, Sun } from 'lucide-react'
+import { Menu, X, Terminal } from 'lucide-react'
 
 interface HeaderProps {
   darkMode: boolean
@@ -20,33 +20,36 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
   }, [])
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'home', href: '#home' },
+    { name: 'about', href: '#about' },
+    { name: 'skills', href: '#skills' },
+    { name: 'experience', href: '#experience' },
+    { name: 'projects', href: '#projects' },
+    { name: 'education', href: '#education' },
+    { name: 'contact', href: '#contact' },
   ]
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-gray-950/95 backdrop-blur-md border-emerald-500/20 shadow-lg shadow-emerald-500/5'
+          : 'bg-gray-950/50 border-emerald-500/10'
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <motion.a
             href="#home"
-            className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            className="flex items-center gap-2 text-xl font-mono font-bold text-emerald-400"
             whileHover={{ scale: 1.05 }}
           >
-            Khoa Dang
+            <Terminal size={20} className="text-emerald-400" />
+            <span className="text-gray-400">&lt;</span>
+            KhoaDang
+            <span className="text-gray-400">/&gt;</span>
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -55,17 +58,18 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
               <a
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="group px-3 py-2 rounded text-sm font-mono text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all duration-200"
               >
-                {item.name}
+                <span className="text-emerald-500 mr-1">$</span>
+                <span className="group-hover:text-emerald-400 transition-colors">{item.name}</span>
               </a>
             ))}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="ml-4 px-3 py-1.5 rounded border border-emerald-500/30 text-emerald-400 font-mono text-xs hover:bg-emerald-500/10 transition-all duration-200"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              [{darkMode ? 'Light' : 'Dark'}]
             </button>
           </div>
 
@@ -73,14 +77,14 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors mr-2"
+              className="p-2 rounded border border-emerald-500/30 text-emerald-400 font-mono text-xs hover:bg-emerald-500/10 transition-all mr-2"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              [{darkMode ? 'L' : 'D'}]
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="p-2 rounded border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -94,7 +98,7 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden pb-4"
+            className="md:hidden pb-4 border-t border-emerald-500/20 mt-2 pt-4"
           >
             <div className="flex flex-col space-y-2">
               {navItems.map((item) => (
@@ -102,8 +106,9 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="px-3 py-2 rounded text-base font-mono text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"
                 >
+                  <span className="text-emerald-500 mr-2">$</span>
                   {item.name}
                 </a>
               ))}

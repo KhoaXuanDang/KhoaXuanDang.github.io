@@ -2,18 +2,155 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import coding fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors;
+    @apply bg-gray-950 dark:bg-black text-gray-100 transition-colors;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 0, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Terminal cursor effect */
+  .terminal-cursor::after {
+    content: '▊';
+    animation: blink 0.75s step-end infinite;
+    color: #00ff00;
+  }
+
+  /* Code block styling */
+  code {
+    @apply font-mono text-sm;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-emerald-500/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-emerald-500;
+  }
+}
+
+@layer components {
+  /* Terminal window effect */
+  .terminal-window {
+    @apply relative bg-code-bg border border-code-border rounded-lg overflow-hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  }
+
+  .terminal-header {
+    @apply bg-code-bgLight border-b border-code-border px-4 py-2 flex items-center gap-2;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  /* Code snippet styling */
+  .code-snippet {
+    @apply font-mono text-sm bg-code-bgLight p-4 rounded-lg border border-code-border overflow-x-auto;
+  }
+
+  /* Glowing effect for buttons */
+  .glow-button {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+
+  .glow-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .glow-button:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Matrix rain effect container */
+  .matrix-bg {
+    @apply fixed inset-0 pointer-events-none opacity-5;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 0, 0.03) 2px,
+      rgba(0, 255, 0, 0.03) 4px
+    );
+  }
+
+  /* Scanline effect */
+  .scanline {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 255, 0, 0.05) 50%,
+      transparent 100%
+    );
+    animation: scan 8s linear infinite;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Terminal text colors */
+  .text-terminal-green {
+    @apply text-emerald-400;
+  }
+
+  .text-terminal-cyan {
+    @apply text-cyan-400;
+  }
+
+  .text-terminal-yellow {
+    @apply text-yellow-400;
+  }
+
+  .text-syntax-keyword {
+    @apply text-red-400;
+  }
+
+  .text-syntax-string {
+    @apply text-green-400;
+  }
+
+  .text-syntax-function {
+    @apply text-blue-400;
+  }
+
+  .text-syntax-variable {
+    @apply text-purple-400;
+  }
+
+  .text-syntax-comment {
+    @apply text-gray-500;
+  }
+
+  /* Code background */
+  .bg-code {
+    @apply bg-gray-900/80 backdrop-blur-sm;
   }
 }

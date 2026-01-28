@@ -153,36 +153,60 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-7xl">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div className="absolute inset-0 bg-code-pattern"></div>
+      </div>
+
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-center mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-            Explore my latest work and open-source contributions
-          </p>
+          <div className="text-center mb-12">
+            <motion.div
+              className="inline-block mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.2 }}
+            >
+              <span className="font-mono text-purple-400 text-sm">&lt;projects&gt;</span>
+            </motion.div>
+            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+              git log --repos
+            </h2>
+            <p className="text-gray-400 font-mono text-sm mb-2">
+              <span className="text-gray-600">// </span>
+              Latest work and open-source contributions
+            </p>
+            <motion.div
+              className="mt-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              <span className="font-mono text-purple-400 text-sm">&lt;/projects&gt;</span>
+            </motion.div>
+          </div>
 
           {/* Search and Filter */}
           <div className="mb-8 space-y-4">
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500" size={20} />
               <input
                 type="text"
-                placeholder="Search projects..."
+                placeholder="$ search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-10 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-12 pr-10 py-3 rounded-lg border border-emerald-500/30 bg-gray-900/50 text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-600"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-emerald-400"
                 >
                   <X size={20} />
                 </button>
@@ -194,10 +218,10 @@ const Projects = () => {
                 <button
                   key={lang}
                   onClick={() => setSelectedLanguage(lang)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded border font-mono text-sm transition-all ${
                     selectedLanguage === lang
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                      ? 'bg-emerald-500 text-black border-emerald-500'
+                      : 'bg-gray-900/50 border-emerald-500/30 text-gray-400 hover:border-emerald-500/50 hover:bg-emerald-500/10'
                   }`}
                 >
                   {lang}
@@ -209,15 +233,18 @@ const Projects = () => {
           {/* Loading State */}
           {loading && (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-              <p className="mt-4 text-gray-600 dark:text-gray-400">Loading projects...</p>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500"></div>
+              <p className="mt-4 text-gray-400 font-mono">
+                <span className="text-emerald-400">$</span> loading projects...
+              </p>
             </div>
           )}
 
           {/* Error State */}
           {error && (
-            <div className="text-center py-12 text-red-600 dark:text-red-400">
-              <p>Error loading projects: {error}</p>
+            <div className="text-center py-12 font-mono">
+              <p className="text-red-400">Error: {error}</p>
+              <p className="text-gray-600 mt-2">// Failed to fetch repositories</p>
             </div>
           )}
 
@@ -239,77 +266,81 @@ const Projects = () => {
                     <motion.div
                       key={repo.id}
                       variants={itemVariants}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 flex flex-col"
+                      className="terminal-window group hover:border-emerald-500/50 transition-all duration-300"
                     >
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <Github size={20} className="text-gray-600 dark:text-gray-400" />
-                          <h3 className="font-bold text-lg text-gray-900 dark:text-white truncate">
-                            {repo.name}
-                          </h3>
-                        </div>
+                      <div className="terminal-header">
+                        <div className="terminal-dot bg-red-500"></div>
+                        <div className="terminal-dot bg-yellow-500"></div>
+                        <div className="terminal-dot bg-emerald-500"></div>
+                        <Github size={14} className="ml-auto text-emerald-400" />
                       </div>
 
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow line-clamp-3">
-                        {repo.description || 'No description available'}
-                      </p>
-
-                      {repo.topics.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {repo.topics.slice(0, 3).map((topic) => (
-                            <span
-                              key={topic}
-                              className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded text-xs"
-                            >
-                              {topic}
-                            </span>
-                          ))}
+                      <div className="p-5 flex flex-col h-full">
+                        <div className="mb-3">
+                          <h3 className="font-mono font-bold text-lg text-emerald-400 truncate mb-2">
+                            $ git clone {repo.name}
+                          </h3>
+                          <p className="text-gray-400 text-sm flex-grow line-clamp-3 font-mono">
+                            <span className="text-gray-600">// </span>
+                            {repo.description || 'No description available'}
+                          </p>
                         </div>
-                      )}
 
-                      <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
-                        <div className="flex items-center gap-4">
+                        {repo.topics.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {repo.topics.slice(0, 3).map((topic) => (
+                              <span
+                                key={topic}
+                                className="px-2 py-0.5 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded font-mono text-xs"
+                              >
+                                #{topic}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-3 font-mono">
                           {repo.language && (
                             <span className="flex items-center gap-1">
-                              <span className="w-3 h-3 rounded-full bg-blue-500"></span>
+                              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                               {repo.language}
                             </span>
                           )}
                           <span className="flex items-center gap-1">
-                            <Star size={16} />
+                            <Star size={14} className="text-yellow-500" />
                             {repo.stargazers_count}
                           </span>
                           <span className="flex items-center gap-1">
-                            <GitFork size={16} />
+                            <GitFork size={14} className="text-cyan-500" />
                             {repo.forks_count}
                           </span>
                         </div>
-                      </div>
 
-                      <div className="text-xs text-gray-500 dark:text-gray-500 mb-4">
-                        Updated {formatDate(repo.pushed_at)}
-                      </div>
+                        <div className="text-xs text-gray-600 mb-4 font-mono">
+                          <span className="text-emerald-500">→</span> Updated {formatDate(repo.pushed_at)}
+                        </div>
 
-                      <div className="flex gap-2">
-                        <a
-                          href={repo.html_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors text-center text-sm font-medium flex items-center justify-center gap-2"
-                        >
-                          <Github size={16} />
-                          View Code
-                        </a>
-                        {repo.homepage && (
+                        <div className="flex gap-2 mt-auto">
                           <a
-                            href={repo.homepage}
+                            href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center text-sm font-medium flex items-center justify-center"
+                            className="flex-1 px-3 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded hover:bg-emerald-500/20 transition-colors text-center text-xs font-mono font-semibold flex items-center justify-center gap-2"
                           >
-                            <ExternalLink size={16} />
+                            <Github size={14} />
+                            View Code
                           </a>
-                        )}
+                          {repo.homepage && (
+                            <a
+                              href={repo.homepage}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-3 py-2 border border-cyan-500/30 text-cyan-400 rounded hover:bg-cyan-500/10 transition-colors text-center text-xs font-mono flex items-center justify-center"
+                            >
+                              <ExternalLink size={14} />
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -321,10 +352,10 @@ const Projects = () => {
                   href="https://github.com/KhoaXuanDang"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors font-medium"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black rounded-lg hover:bg-emerald-400 transition-colors font-mono font-semibold glow-button"
                 >
                   <Github size={20} />
-                  View All Projects on GitHub
+                  $ git clone --all
                   <ExternalLink size={16} />
                 </a>
               </div>
