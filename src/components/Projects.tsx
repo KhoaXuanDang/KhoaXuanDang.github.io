@@ -277,10 +277,10 @@ const Projects = () => {
 
                       <div className="p-5 flex flex-col h-full">
                         <div className="mb-3">
-                          <h3 className="font-mono font-bold text-lg text-emerald-400 truncate mb-2">
+                          <h3 className="font-mono font-bold text-base text-emerald-400 mb-2 break-words">
                             $ git clone {repo.name}
                           </h3>
-                          <p className="text-gray-400 text-sm flex-grow line-clamp-3 font-mono">
+                          <p className="text-gray-400 text-sm line-clamp-3 font-mono break-words">
                             <span className="text-gray-600">// </span>
                             {repo.description || 'No description available'}
                           </p>
@@ -320,24 +320,25 @@ const Projects = () => {
                           <span className="text-emerald-500">→</span> Updated {formatDate(repo.pushed_at)}
                         </div>
 
-                        <div className="flex gap-2 mt-auto">
+                        <div className="flex gap-2 mt-auto pt-2">
                           <a
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 px-3 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded hover:bg-emerald-500/20 transition-colors text-center text-xs font-mono font-semibold flex items-center justify-center gap-2"
+                            className="flex-1 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg hover:bg-emerald-500/20 transition-colors text-center font-mono font-semibold flex items-center justify-center gap-2 text-sm"
                           >
-                            <Github size={14} />
-                            View Code
+                            <Github size={16} />
+                            <span>View Code</span>
                           </a>
                           {repo.homepage && (
                             <a
                               href={repo.homepage}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-3 py-2 border border-cyan-500/30 text-cyan-400 rounded hover:bg-cyan-500/10 transition-colors text-center text-xs font-mono flex items-center justify-center"
+                              className="px-4 py-2.5 border border-cyan-500/30 text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-colors text-center font-mono flex items-center justify-center"
+                              title="Live Demo"
                             >
-                              <ExternalLink size={14} />
+                              <ExternalLink size={16} />
                             </a>
                           )}
                         </div>
