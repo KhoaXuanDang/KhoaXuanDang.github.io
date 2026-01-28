@@ -93,7 +93,7 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gray-50 dark:bg-gray-900">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0 bg-grid-pattern"></div>
@@ -115,11 +115,11 @@ const Experience = () => {
             >
               <span className="font-mono text-blue-400 text-sm">&lt;experience&gt;</span>
             </motion.div>
-            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-mono">
               git log --work-history
             </h2>
-            <p className="text-gray-400 font-mono text-sm">
-              <span className="text-gray-600">// </span>
+            <p className="text-gray-600 dark:text-gray-400 font-mono text-sm">
+              <span className="text-gray-500 dark:text-gray-600">// </span>
               Professional experience and achievements
             </p>
           </div>
@@ -151,11 +151,11 @@ const Experience = () => {
                         <img
                           src={exp.logo}
                           alt={`${exp.company} logo`}
-                          className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg bg-gray-900 p-2 border border-emerald-500/30"
+                          className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg bg-white dark:bg-gray-900 p-2 border-2 border-gray-200 dark:border-emerald-500/30"
                         />
                       ) : (
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center border border-emerald-500/30">
-                          <Building2 className="text-black" size={24} />
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center border-2 border-gray-200 dark:border-emerald-500/30">
+                          <Building2 className="text-white dark:text-black" size={24} />
                         </div>
                       )}
 
@@ -203,15 +203,15 @@ const Experience = () => {
 
                   <div className="space-y-3">
                     <div className="text-sm font-mono text-gray-500 mb-2">
-                      <span className="text-emerald-400">// </span>
-                      <span className="text-gray-400">Key achievements:</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">// </span>
+                      <span className="text-gray-600 dark:text-gray-400">Key achievements:</span>
                     </div>
                     {exp.achievements.map((achievement, achIndex) => (
                       <div
                         key={achIndex}
-                        className="flex items-start gap-3 text-gray-300 text-sm"
+                        className="flex items-start gap-3 text-gray-700 dark:text-gray-300 text-sm"
                       >
-                        <Terminal size={14} className="text-emerald-400 mt-1 flex-shrink-0" />
+                        <Terminal size={14} className="text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0" />
                         <span className="font-mono">{achievement}</span>
                       </div>
                     ))}

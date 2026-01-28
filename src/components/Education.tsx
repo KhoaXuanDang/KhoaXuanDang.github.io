@@ -59,7 +59,7 @@ const Education = () => {
   }
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gray-50 dark:bg-gray-900">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0 bg-code-pattern"></div>
@@ -79,13 +79,13 @@ const Education = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2 }}
             >
-              <span className="font-mono text-yellow-400 text-sm">&lt;education&gt;</span>
+              <span className="font-mono text-yellow-600 dark:text-yellow-400 text-sm">&lt;education&gt;</span>
             </motion.div>
-            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-mono">
               Academic Credentials
             </h2>
-            <p className="text-gray-400 font-mono text-sm">
-              <span className="text-gray-600">// </span>
+            <p className="text-gray-600 dark:text-gray-400 font-mono text-sm">
+              <span className="text-gray-400 dark:text-gray-600">// </span>
               Formal education and coursework
             </p>
           </div>
@@ -106,31 +106,31 @@ const Education = () => {
                   <div className="terminal-dot bg-red-500"></div>
                   <div className="terminal-dot bg-yellow-500"></div>
                   <div className="terminal-dot bg-emerald-500"></div>
-                  <GraduationCap className="ml-auto text-yellow-400" size={16} />
+                  <GraduationCap className="ml-auto text-yellow-600 dark:text-yellow-400" size={16} />
                 </div>
 
                 <div className="p-6 sm:p-8">
                   <div className="flex items-start gap-4">
                     <div className="flex-1">
                       <div className="mb-4">
-                        <h3 className="text-xl sm:text-2xl font-bold font-mono text-yellow-400 mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold font-mono text-yellow-600 dark:text-yellow-400 mb-2">
                           $ cd {edu.school.toLowerCase().replace(/\s+/g, '-')}
                         </h3>
-                        <p className="text-lg text-cyan-400 font-mono mt-1">
+                        <p className="text-lg text-cyan-600 dark:text-cyan-400 font-mono mt-1">
                           {edu.degree}
                         </p>
                       </div>
-                      <div className="flex flex-col sm:flex-row gap-4 text-sm text-gray-400 font-mono mb-4">
+                      <div className="flex flex-col sm:flex-row gap-4 text-sm text-gray-600 dark:text-gray-400 font-mono mb-4">
                         <p>{edu.location}</p>
-                        <span className="hidden sm:inline text-gray-600">|</span>
+                        <span className="hidden sm:inline text-gray-400 dark:text-gray-600">|</span>
                         <p>{edu.period}</p>
                       </div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded font-mono text-sm">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 rounded font-mono text-sm">
                           <Award size={14} />
                           <span>GPA: {edu.gpa}</span>
                         </div>
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded font-mono text-sm">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-50 dark:bg-purple-500/10 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-400 rounded font-mono text-sm">
                           <Award size={14} />
                           <span>{edu.honors}</span>
                         </div>
@@ -152,12 +152,12 @@ const Education = () => {
               <div className="terminal-dot bg-red-500"></div>
               <div className="terminal-dot bg-yellow-500"></div>
               <div className="terminal-dot bg-emerald-500"></div>
-              <BookOpen className="ml-auto text-cyan-400" size={16} />
+              <BookOpen className="ml-auto text-cyan-600 dark:text-cyan-400" size={16} />
             </div>
 
             <div className="p-6 sm:p-8">
               <div className="mb-4">
-                <h3 className="text-xl font-bold font-mono text-cyan-400 mb-2">
+                <h3 className="text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400 mb-2">
                   <span className="text-gray-500">const </span>
                   relevantCourses
                   <span className="text-gray-500"> = [</span>
@@ -167,9 +167,9 @@ const Education = () => {
                 {relevantCourses.map((course, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-2 px-3 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded text-gray-300 font-mono text-xs hover:bg-cyan-500/20 transition-colors"
+                    className="flex items-start gap-2 px-3 py-2 bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 rounded text-gray-700 dark:text-gray-300 font-mono text-xs hover:bg-cyan-100 dark:hover:bg-cyan-500/20 transition-colors"
                   >
-                    <span className="text-cyan-400 flex-shrink-0">✓</span>
+                    <span className="text-cyan-600 dark:text-cyan-400 flex-shrink-0">✓</span>
                     <span>"{course}"{index < relevantCourses.length - 1 && ','}</span>
                   </div>
                 ))}
@@ -186,7 +186,7 @@ const Education = () => {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
           >
-            <span className="font-mono text-yellow-400 text-sm">&lt;/education&gt;</span>
+            <span className="font-mono text-yellow-600 dark:text-yellow-400 text-sm">&lt;/education&gt;</span>
           </motion.div>
         </motion.div>
       </div>

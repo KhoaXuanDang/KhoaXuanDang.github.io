@@ -61,16 +61,37 @@ const Contact = () => {
   ]
 
   const getContactColor = (color: string) => {
-    const colors: Record<string, { border: string; text: string; hover: string }> = {
-      emerald: { border: 'border-emerald-500/30', text: 'text-emerald-400', hover: 'hover:border-emerald-500/50 hover:bg-emerald-500/10' },
-      cyan: { border: 'border-cyan-500/30', text: 'text-cyan-400', hover: 'hover:border-cyan-500/50 hover:bg-cyan-500/10' },
-      blue: { border: 'border-blue-500/30', text: 'text-blue-400', hover: 'hover:border-blue-500/50 hover:bg-blue-500/10' },
+    const colors: Record<string, { border: string; borderDark: string; text: string; textDark: string; hover: string; hoverDark: string }> = {
+      emerald: { 
+        border: 'border-emerald-300', 
+        borderDark: 'dark:border-emerald-500/30', 
+        text: 'text-emerald-700', 
+        textDark: 'dark:text-emerald-400', 
+        hover: 'hover:border-emerald-500 hover:bg-emerald-50', 
+        hoverDark: 'dark:hover:border-emerald-500/50 dark:hover:bg-emerald-500/10' 
+      },
+      cyan: { 
+        border: 'border-cyan-300', 
+        borderDark: 'dark:border-cyan-500/30', 
+        text: 'text-cyan-700', 
+        textDark: 'dark:text-cyan-400', 
+        hover: 'hover:border-cyan-500 hover:bg-cyan-50', 
+        hoverDark: 'dark:hover:border-cyan-500/50 dark:hover:bg-cyan-500/10' 
+      },
+      blue: { 
+        border: 'border-blue-300', 
+        borderDark: 'dark:border-blue-500/30', 
+        text: 'text-blue-700', 
+        textDark: 'dark:text-blue-400', 
+        hover: 'hover:border-blue-500 hover:bg-blue-50', 
+        hoverDark: 'dark:hover:border-blue-500/50 dark:hover:bg-blue-500/10' 
+      },
     }
     return colors[color] || colors.emerald
   }
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white dark:bg-gray-950">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0 bg-grid-pattern"></div>
@@ -92,11 +113,11 @@ const Contact = () => {
             >
               <span className="font-mono text-pink-400 text-sm">&lt;contact&gt;</span>
             </motion.div>
-            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-mono">
               $ ./connect
             </h2>
-            <p className="text-gray-400 font-mono text-sm mb-2">
-              <span className="text-gray-600">// </span>
+            <p className="text-gray-600 dark:text-gray-400 font-mono text-sm mb-2">
+              <span className="text-gray-500 dark:text-gray-600">// </span>
               Let's build something amazing together
             </p>
           </div>
@@ -109,7 +130,7 @@ const Contact = () => {
                   <div className="terminal-dot bg-red-500"></div>
                   <div className="terminal-dot bg-yellow-500"></div>
                   <div className="terminal-dot bg-emerald-500"></div>
-                  <span className="text-gray-400 text-xs ml-2 font-mono">~/contact-info</span>
+                  <span className="text-gray-500 dark:text-gray-400 text-xs ml-2 font-mono">~/contact-info</span>
                 </div>
                 <div className="p-6 space-y-4">
                   {contactInfo.map((info, index) => {
@@ -120,17 +141,17 @@ const Contact = () => {
                         href={info.link}
                         target={info.link.startsWith('http') ? '_blank' : undefined}
                         rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className={`flex items-center gap-4 p-4 border ${colorClasses.border} rounded ${colorClasses.hover} transition-all group`}
+                        className={`flex items-center gap-4 p-4 border ${colorClasses.border} ${colorClasses.borderDark} rounded ${colorClasses.hover} ${colorClasses.hoverDark} transition-all group`}
                         whileHover={{ scale: 1.02 }}
                       >
-                        <div className={`p-2 ${colorClasses.border} border rounded`}>
-                          <info.icon className={colorClasses.text} size={20} />
+                        <div className={`p-2 ${colorClasses.border} ${colorClasses.borderDark} border rounded`}>
+                          <info.icon className={`${colorClasses.text} ${colorClasses.textDark}`} size={20} />
                         </div>
                         <div className="flex-1">
                           <div className="text-xs text-gray-500 font-mono">
-                            <span className="text-emerald-500">$</span> {info.label.toLowerCase()}
+                            <span className="text-emerald-600 dark:text-emerald-500">$</span> {info.label.toLowerCase()}
                           </div>
-                          <div className={`font-mono text-sm ${colorClasses.text}`}>
+                          <div className={`font-mono text-sm ${colorClasses.text} ${colorClasses.textDark}`}>
                             {info.value}
                           </div>
                         </div>
@@ -140,19 +161,19 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="terminal-window border-purple-500/30">
+              <div className="terminal-window border-purple-300 dark:border-purple-500/30">
                 <div className="terminal-header">
                   <div className="terminal-dot bg-red-500"></div>
                   <div className="terminal-dot bg-yellow-500"></div>
                   <div className="terminal-dot bg-emerald-500"></div>
-                  <Terminal className="ml-auto text-purple-400" size={14} />
+                  <Terminal className="ml-auto text-purple-600 dark:text-purple-400" size={14} />
                 </div>
                 <div className="p-6">
-                  <h4 className="font-mono font-semibold text-lg mb-2 text-purple-400">
-                    <span className="text-gray-500">const</span> status = <span className="text-emerald-400">"Open to Opportunities"</span>;
+                  <h4 className="font-mono font-semibold text-lg mb-2 text-purple-600 dark:text-purple-400">
+                    <span className="text-gray-500">const</span> status = <span className="text-emerald-600 dark:text-emerald-400">"Open to Opportunities"</span>;
                   </h4>
-                  <p className="text-gray-400 font-mono text-sm">
-                    <span className="text-gray-600">// </span>
+                  <p className="text-gray-600 dark:text-gray-400 font-mono text-sm">
+                    <span className="text-gray-400 dark:text-gray-600">// </span>
                     I'm currently seeking full-time Software Engineering positions starting in 2026.
                   </p>
                 </div>
@@ -166,16 +187,16 @@ const Contact = () => {
                   <div className="terminal-dot bg-red-500"></div>
                   <div className="terminal-dot bg-yellow-500"></div>
                   <div className="terminal-dot bg-emerald-500"></div>
-                  <span className="text-gray-400 text-xs ml-2 font-mono">~/send-message.sh</span>
+                  <span className="text-gray-500 dark:text-gray-400 text-xs ml-2 font-mono">~/send-message.sh</span>
                 </div>
                 <div className="p-6">
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-sm font-mono text-gray-400 mb-2"
+                        className="block text-sm font-mono text-gray-600 dark:text-gray-400 mb-2"
                       >
-                        <span className="text-cyan-400">$</span> Enter your name:
+                        <span className="text-cyan-600 dark:text-cyan-400">$</span> Enter your name:
                       </label>
                       <input
                         type="text"
@@ -184,7 +205,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded border border-emerald-500/30 bg-gray-900/50 text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-600"
+                        className="w-full px-4 py-3 rounded border border-gray-300 dark:border-emerald-500/30 bg-white dark:bg-gray-900/50 text-gray-700 dark:text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-600"
                         placeholder="John Doe"
                       />
                     </div>
@@ -192,9 +213,9 @@ const Contact = () => {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-sm font-mono text-gray-400 mb-2"
+                        className="block text-sm font-mono text-gray-600 dark:text-gray-400 mb-2"
                       >
-                        <span className="text-cyan-400">$</span> Enter your email:
+                        <span className="text-cyan-600 dark:text-cyan-400">$</span> Enter your email:
                       </label>
                       <input
                         type="email"
@@ -203,7 +224,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded border border-emerald-500/30 bg-gray-900/50 text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-600"
+                        className="w-full px-4 py-3 rounded border border-gray-300 dark:border-emerald-500/30 bg-white dark:bg-gray-900/50 text-gray-700 dark:text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-600"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -211,9 +232,9 @@ const Contact = () => {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm font-mono text-gray-400 mb-2"
+                        className="block text-sm font-mono text-gray-600 dark:text-gray-400 mb-2"
                       >
-                        <span className="text-cyan-400">$</span> Enter your message:
+                        <span className="text-cyan-600 dark:text-cyan-400">$</span> Enter your message:
                       </label>
                       <textarea
                         id="message"
@@ -222,7 +243,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-3 rounded border border-emerald-500/30 bg-gray-900/50 text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none placeholder-gray-600"
+                        className="w-full px-4 py-3 rounded border border-gray-300 dark:border-emerald-500/30 bg-white dark:bg-gray-900/50 text-gray-700 dark:text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none placeholder-gray-400 dark:placeholder-gray-600"
                         placeholder="Your message here..."
                       />
                     </div>
@@ -232,8 +253,8 @@ const Contact = () => {
                       disabled={submitted}
                       className={`w-full px-6 py-3 rounded font-mono font-semibold transition-all flex items-center justify-center gap-2 ${
                         submitted
-                          ? 'bg-emerald-500 text-black'
-                          : 'bg-emerald-500 text-black hover:bg-emerald-400 glow-button'
+                          ? 'bg-emerald-600 dark:bg-emerald-500 text-white dark:text-black'
+                          : 'bg-emerald-600 dark:bg-emerald-500 text-white dark:text-black hover:bg-emerald-700 dark:hover:bg-emerald-400 glow-button'
                       }`}
                     >
                       {submitted ? (

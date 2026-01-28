@@ -27,7 +27,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white dark:bg-gray-950">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -49,13 +49,13 @@ const About = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2 }}
             >
-              <span className="font-mono text-cyan-400 text-sm">&lt;about&gt;</span>
+              <span className="font-mono text-cyan-600 dark:text-cyan-400 text-sm">&lt;about&gt;</span>
             </motion.div>
-            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-mono">
               whoami
             </h2>
-            <p className="text-gray-400 font-mono text-sm">
-              <span className="text-gray-600">// </span>
+            <p className="text-gray-600 dark:text-gray-400 font-mono text-sm">
+              <span className="text-gray-400 dark:text-gray-600">// </span>
               Background, skills, and what drives me
             </p>
           </div>
@@ -157,12 +157,12 @@ const About = () => {
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${getStatColor(stat.color)} rounded-lg blur-xl opacity-20 group-hover:opacity-40 transition-opacity`}></div>
-                  <div className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-lg p-6 text-center">
-                    <stat.icon className="mx-auto mb-3 text-emerald-400" size={32} />
-                    <div className="text-3xl font-bold font-mono bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                  <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/80 dark:to-gray-800/80 backdrop-blur-sm border-2 border-gray-200 dark:border-gray-800 rounded-lg p-6 text-center shadow-lg dark:shadow-none">
+                    <stat.icon className="mx-auto mb-3 text-emerald-600 dark:text-emerald-400" size={32} />
+                    <div className="text-3xl font-bold font-mono bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-gray-400 text-sm font-mono">{stat.label}</div>
+                    <div className="text-gray-600 dark:text-gray-400 text-sm font-mono">{stat.label}</div>
                   </div>
                 </motion.div>
               ))}
@@ -175,7 +175,7 @@ const About = () => {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
           >
-            <span className="font-mono text-cyan-400 text-sm">&lt;/about&gt;</span>
+            <span className="font-mono text-cyan-600 dark:text-cyan-400 text-sm">&lt;/about&gt;</span>
           </motion.div>
         </motion.div>
       </div>

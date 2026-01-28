@@ -1,9 +1,9 @@
+/* Import coding fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import coding fonts */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   html {
@@ -11,7 +11,10 @@
   }
 
   body {
-    @apply bg-gray-950 dark:bg-black text-gray-100 transition-colors;
+    @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors;
+  }
+
+  body.dark {
     background-image: 
       linear-gradient(to right, rgba(0, 255, 0, 0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 255, 0, 0.02) 1px, transparent 1px);
@@ -37,7 +40,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    @apply bg-gray-200 dark:bg-gray-900;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -52,12 +55,15 @@
 @layer components {
   /* Terminal window effect */
   .terminal-window {
-    @apply relative bg-code-bg border border-code-border rounded-lg overflow-hidden;
+    @apply relative bg-gray-50 dark:bg-code-bg border border-gray-300 dark:border-code-border rounded-lg overflow-hidden;
+  }
+
+  body.dark .terminal-window {
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
   }
 
   .terminal-header {
-    @apply bg-code-bgLight border-b border-code-border px-4 py-2 flex items-center gap-2;
+    @apply bg-gray-200 dark:bg-code-bgLight border-b border-gray-300 dark:border-code-border px-4 py-2 flex items-center gap-2;
   }
 
   .terminal-dot {

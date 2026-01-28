@@ -153,7 +153,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white dark:bg-gray-950">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0 bg-code-pattern"></div>
@@ -175,11 +175,11 @@ const Projects = () => {
             >
               <span className="font-mono text-purple-400 text-sm">&lt;projects&gt;</span>
             </motion.div>
-            <h2 className="text-4xl font-bold text-gray-100 mb-2 font-mono">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-mono">
               git log --repos
             </h2>
-            <p className="text-gray-400 font-mono text-sm mb-2">
-              <span className="text-gray-600">// </span>
+            <p className="text-gray-600 dark:text-gray-400 font-mono text-sm mb-2">
+              <span className="text-gray-500 dark:text-gray-600">// </span>
               Latest work and open-source contributions
             </p>
             <motion.div
@@ -195,18 +195,18 @@ const Projects = () => {
           {/* Search and Filter */}
           <div className="mb-8 space-y-4">
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500" size={20} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-600 dark:text-emerald-500" size={20} />
               <input
                 type="text"
                 placeholder="$ search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-10 py-3 rounded-lg border border-emerald-500/30 bg-gray-900/50 text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-600"
+                className="w-full pl-12 pr-10 py-3 rounded-lg border border-gray-300 dark:border-emerald-500/30 bg-white dark:bg-gray-900/50 text-gray-700 dark:text-gray-300 font-mono focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-600"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-emerald-400"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
                 >
                   <X size={20} />
                 </button>
@@ -220,8 +220,8 @@ const Projects = () => {
                   onClick={() => setSelectedLanguage(lang)}
                   className={`px-4 py-2 rounded border font-mono text-sm transition-all ${
                     selectedLanguage === lang
-                      ? 'bg-emerald-500 text-black border-emerald-500'
-                      : 'bg-gray-900/50 border-emerald-500/30 text-gray-400 hover:border-emerald-500/50 hover:bg-emerald-500/10'
+                      ? 'bg-emerald-600 dark:bg-emerald-500 text-white dark:text-black border-emerald-600 dark:border-emerald-500'
+                      : 'bg-white dark:bg-gray-900/50 border-gray-300 dark:border-emerald-500/30 text-gray-600 dark:text-gray-400 hover:border-emerald-500 dark:hover:border-emerald-500/50 hover:bg-emerald-50 dark:hover:bg-emerald-500/10'
                   }`}
                 >
                   {lang}
@@ -233,9 +233,9 @@ const Projects = () => {
           {/* Loading State */}
           {loading && (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500"></div>
-              <p className="mt-4 text-gray-400 font-mono">
-                <span className="text-emerald-400">$</span> loading projects...
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 dark:border-emerald-500"></div>
+              <p className="mt-4 text-gray-600 dark:text-gray-400 font-mono">
+                <span className="text-emerald-600 dark:text-emerald-400">$</span> loading projects...
               </p>
             </div>
           )}
@@ -272,16 +272,16 @@ const Projects = () => {
                         <div className="terminal-dot bg-red-500"></div>
                         <div className="terminal-dot bg-yellow-500"></div>
                         <div className="terminal-dot bg-emerald-500"></div>
-                        <Github size={14} className="ml-auto text-emerald-400" />
+                        <Github size={14} className="ml-auto text-emerald-600 dark:text-emerald-400" />
                       </div>
 
                       <div className="p-5 flex flex-col h-full">
                         <div className="mb-3">
-                          <h3 className="font-mono font-bold text-base text-emerald-400 mb-2 break-words">
+                          <h3 className="font-mono font-bold text-base text-emerald-600 dark:text-emerald-400 mb-2 break-words">
                             $ git clone {repo.name}
                           </h3>
-                          <p className="text-gray-400 text-sm line-clamp-3 font-mono break-words">
-                            <span className="text-gray-600">// </span>
+                          <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 font-mono break-words">
+                            <span className="text-gray-400 dark:text-gray-600">// </span>
                             {repo.description || 'No description available'}
                           </p>
                         </div>
@@ -291,7 +291,7 @@ const Projects = () => {
                             {repo.topics.slice(0, 3).map((topic) => (
                               <span
                                 key={topic}
-                                className="px-2 py-0.5 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded font-mono text-xs"
+                                className="px-2 py-0.5 bg-purple-50 dark:bg-purple-500/10 border border-purple-300 dark:border-purple-500/30 text-purple-600 dark:text-purple-400 rounded font-mono text-xs"
                               >
                                 #{topic}
                               </span>
@@ -302,22 +302,22 @@ const Projects = () => {
                         <div className="flex items-center gap-4 text-sm text-gray-500 mb-3 font-mono">
                           {repo.language && (
                             <span className="flex items-center gap-1">
-                              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                              <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-500"></span>
                               {repo.language}
                             </span>
                           )}
                           <span className="flex items-center gap-1">
-                            <Star size={14} className="text-yellow-500" />
+                            <Star size={14} className="text-yellow-600 dark:text-yellow-500" />
                             {repo.stargazers_count}
                           </span>
                           <span className="flex items-center gap-1">
-                            <GitFork size={14} className="text-cyan-500" />
+                            <GitFork size={14} className="text-cyan-600 dark:text-cyan-500" />
                             {repo.forks_count}
                           </span>
                         </div>
 
-                        <div className="text-xs text-gray-600 mb-4 font-mono">
-                          <span className="text-emerald-500">→</span> Updated {formatDate(repo.pushed_at)}
+                        <div className="text-xs text-gray-500 dark:text-gray-600 mb-4 font-mono">
+                          <span className="text-emerald-600 dark:text-emerald-500">→</span> Updated {formatDate(repo.pushed_at)}
                         </div>
 
                         <div className="flex gap-2 mt-auto pt-2">
@@ -325,7 +325,7 @@ const Projects = () => {
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg hover:bg-emerald-500/20 transition-colors text-center font-mono font-semibold flex items-center justify-center gap-2 text-sm"
+                            className="flex-1 px-4 py-2.5 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-500/20 transition-colors text-center font-mono font-semibold flex items-center justify-center gap-2 text-sm"
                           >
                             <Github size={16} />
                             <span>View Code</span>
@@ -335,7 +335,7 @@ const Projects = () => {
                               href={repo.homepage}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-4 py-2.5 border border-cyan-500/30 text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-colors text-center font-mono flex items-center justify-center"
+                              className="px-4 py-2.5 border border-cyan-500 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-500/10 transition-colors text-center font-mono flex items-center justify-center"
                               title="Live Demo"
                             >
                               <ExternalLink size={16} />
@@ -353,7 +353,7 @@ const Projects = () => {
                   href="https://github.com/KhoaXuanDang"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black rounded-lg hover:bg-emerald-400 transition-colors font-mono font-semibold glow-button"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white dark:text-black rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-400 transition-colors font-mono font-semibold glow-button"
                 >
                   <Github size={20} />
                   $ git clone --all
