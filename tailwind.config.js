@@ -48,6 +48,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'sans-serif'],
+        hand: ['Caveat', 'ui-sans-serif', 'cursive'],
       },
       borderRadius: {
         '4xl': '2rem',

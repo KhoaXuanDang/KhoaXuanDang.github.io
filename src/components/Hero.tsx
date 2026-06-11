@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Download, ArrowUpRight, Sparkles } from 'lucide-react'
+import { DoodleArrow, DoodleSparkle } from './Doodle'
 
 const EASE = [0.4, 0, 0.2, 1] as const
 
@@ -105,39 +106,58 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right — portrait card */}
+          {/* Right — portrait cutout with handwritten decorators */}
           <motion.div
             className="lg:col-span-5"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
           >
-            <div className="relative mx-auto max-w-sm">
-              <div className="absolute -inset-4 animate-pulse-slow rounded-[2.5rem] bg-amethyst-cta opacity-30 blur-2xl" />
-              <div className="card relative overflow-hidden rounded-[2rem] p-3">
-                <img
-                  src="/profile-photo.jpg"
-                  alt="Khoa Xuan Dang"
-                  className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
-                />
-                <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/85 px-4 py-3 backdrop-blur-md dark:bg-[#0d0a1a]/80">
-                  <p className="font-display text-sm font-bold text-ink dark:text-white">
-                    Software Engineer
-                  </p>
-                  <p className="text-xs text-ink-muted dark:text-slate-400">
-                    Open to opportunities · 2026
-                  </p>
+            <div className="relative mx-auto h-[360px] w-full max-w-md sm:h-[440px] lg:h-[480px]">
+              {/* Soft gradient halo behind the cutout */}
+              <div className="absolute left-1/2 top-1/2 -z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-amethyst-cta opacity-25 blur-3xl sm:h-80 sm:w-80" />
+
+              {/* Portrait — transparent cutout (profile-photo.png); falls back to the existing photo */}
+              <img
+                src="/profile-photo.png"
+                onError={(e) => {
+                  const img = e.currentTarget
+                  if (!img.dataset.fallback) {
+                    img.dataset.fallback = 'true'
+                    img.src = '/profile-photo.jpg'
+                    img.classList.add('rounded-[2rem]', 'object-cover')
+                    img.classList.remove('object-contain')
+                  }
+                }}
+                alt="Khoa Xuan Dang"
+                className="relative z-10 mx-auto h-full w-full object-contain drop-shadow-2xl"
+              />
+
+              {/* Decorators (desktop only to avoid overlap on small screens) */}
+              <div className="pointer-events-none absolute inset-0 z-20 hidden font-bold text-ink dark:text-slate-100 lg:block">
+                <DoodleSparkle className="absolute left-2 top-1 text-primary-500" size={24} />
+                <DoodleSparkle className="absolute right-3 bottom-12 text-cream-400" size={15} />
+
+                {/* Call me Khoa */}
+                <div className="absolute left-1 top-2 -rotate-6">
+                  <span className="font-hand text-[26px] leading-none">Call me Khoa</span>
+                  <DoodleArrow variant="down-right" className="ml-10 mt-1 h-10 w-12 text-primary-500" />
+                </div>
+
+                {/* Cloud & AI enthusiast */}
+                <div className="absolute right-2 top-12 flex flex-col items-end -rotate-2">
+                  <span className="font-hand text-[26px] leading-tight text-right">
+                    Cloud &amp; AI<br />enthusiast
+                  </span>
+                  <DoodleArrow variant="down-left" className="mr-2 mt-1 h-10 w-12 text-primary-500" />
+                </div>
+
+                {/* 1+ years exp */}
+                <div className="absolute bottom-14 left-1 flex items-center gap-1 -rotate-3">
+                  <span className="font-hand text-[26px] leading-none">1+ years exp</span>
+                  <DoodleArrow variant="right" className="h-9 w-11 text-primary-500" />
                 </div>
               </div>
-
-              <motion.div
-                className="absolute -right-5 -top-5 hidden rounded-2xl bg-white px-4 py-3 shadow-soft-lg dark:bg-white/10 sm:block"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <p className="font-display text-2xl font-extrabold text-primary-600 dark:text-primary-400">3.89</p>
-                <p className="text-xs text-ink-muted dark:text-slate-400">GPA</p>
-              </motion.div>
             </div>
           </motion.div>
         </div>
