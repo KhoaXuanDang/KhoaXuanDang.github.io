@@ -5,7 +5,7 @@ const About = () => {
   const stats = [
     { icon: Trophy, label: 'GPA', value: '3.897' },
     { icon: Code2, label: 'Experience', value: '1+ Years' },
-    { icon: Zap, label: 'APIs Built', value: '50+' },
+    { icon: Zap, label: 'Cloud & Backend Engineering', value: 'Secure APIs, microservices, and AWS solutions.' },
   ]
 
   const paragraphs = [
