@@ -1,120 +1,129 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Menu, X, Terminal } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Sun, Moon, Sparkles } from 'lucide-react'
 
 interface HeaderProps {
   darkMode: boolean
   setDarkMode: (value: boolean) => void
 }
 
+const navItems = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Education', href: '#education' },
+  { name: 'Contact', href: '#contact' },
+]
+
 const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 16)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { name: 'home', href: '#home' },
-    { name: 'about', href: '#about' },
-    { name: 'skills', href: '#skills' },
-    { name: 'experience', href: '#experience' },
-    { name: 'projects', href: '#projects' },
-    { name: 'education', href: '#education' },
-    { name: 'contact', href: '#contact' },
-  ]
+  const ThemeToggle = ({ className = '' }: { className?: string }) => (
+    <button
+      onClick={() => setDarkMode(!darkMode)}
+      className={`grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-ink-soft transition-all duration-300 ease-smooth hover:border-primary-300 hover:text-primary-600 dark:border-white/15 dark:text-slate-200 dark:hover:border-primary-400/60 dark:hover:text-primary-300 ${className}`}
+      aria-label="Toggle color theme"
+    >
+      {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  )
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={{ y: -90 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-        scrolled
-          ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-gray-200 dark:border-emerald-500/20 shadow-lg dark:shadow-emerald-500/5'
-          : 'bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-emerald-500/10'
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-smooth ${
+        scrolled ? 'glass border-b border-slate-100 shadow-soft dark:border-white/10' : 'border-b border-transparent'
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <motion.a
-            href="#home"
-            className="flex items-center gap-2 text-xl font-mono font-bold text-emerald-600 dark:text-emerald-400"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Terminal size={20} className="text-emerald-600 dark:text-emerald-400" />
-            <span className="text-gray-500 dark:text-gray-400">&lt;</span>
-            KhoaDang
-            <span className="text-gray-500 dark:text-gray-400">/&gt;</span>
-          </motion.a>
+      <nav className="container-px">
+        <div className="flex h-[4.5rem] items-center justify-between py-3">
+          {/* Logo */}
+          <a href="#home" className="group flex items-center gap-2.5">
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-cta text-white shadow-glow transition-transform duration-300 ease-smooth group-hover:scale-105">
+              <Sparkles size={18} />
+            </span>
+            <span className="font-display text-lg font-extrabold text-ink dark:text-white">
+              Khoa<span className="text-primary-600 dark:text-primary-400">Dang</span>
+            </span>
+          </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Centered nav */}
+          <div className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="group px-3 py-2 rounded text-sm font-mono text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all duration-200"
+                className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-all duration-300 ease-smooth hover:bg-primary-50 hover:text-primary-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
               >
-                <span className="text-emerald-600 dark:text-emerald-500 mr-1">$</span>
-                <span className="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{item.name}</span>
+                {item.name}
               </a>
             ))}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 px-3 py-1.5 rounded border border-emerald-600 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-mono text-xs hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all duration-200"
-              aria-label="Toggle dark mode"
-            >
-              [{darkMode ? 'Light' : 'Dark'}]
-            </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded border border-emerald-600 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-mono text-xs hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all mr-2"
-              aria-label="Toggle dark mode"
-            >
-              [{darkMode ? 'L' : 'D'}]
-            </button>
+          {/* Right cluster */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <ThemeToggle />
+            <a href="#contact" className="btn-primary px-5 py-2.5 text-sm">
+              Let&apos;s Talk
+            </a>
+          </div>
+
+          {/* Mobile cluster */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded border border-emerald-600 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10"
+              className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-ink dark:border-white/15 dark:text-slate-100"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden pb-4 border-t border-gray-200 dark:border-emerald-500/20 mt-2 pt-4"
-          >
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="overflow-hidden lg:hidden"
+            >
+              <div className="flex flex-col gap-1 pb-4 pt-2">
+                {navItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="rounded-2xl px-4 py-2.5 text-base font-medium text-ink-soft transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                  >
+                    {item.name}
+                  </a>
+                ))}
                 <a
-                  key={item.name}
-                  href={item.href}
+                  href="#contact"
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2 rounded text-base font-mono text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-colors"
+                  className="btn-primary mt-2 px-5 py-3 text-sm"
                 >
-                  <span className="text-emerald-600 dark:text-emerald-500 mr-2">$</span>
-                  {item.name}
+                  Let&apos;s Talk
                 </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </motion.header>
   )

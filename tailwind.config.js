@@ -8,96 +8,82 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Coding theme colors - Terminal & Syntax inspired
+        // Primary accent — refined navy / royal blue (suit vibe)
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#eef4ff',
+          100: '#dae6ff',
+          200: '#bcd2ff',
+          300: '#8eb3ff',
+          400: '#5b8af6',
+          500: '#3666ea',
+          600: '#2049d6',
+          700: '#1c3bb0',
+          800: '#1c348b',
+          900: '#1b2f6e',
+          950: '#121d44',
         },
-        terminal: {
-          green: '#00ff00',
-          cyan: '#00ffff',
-          yellow: '#ffff00',
-          red: '#ff0000',
-          purple: '#ff00ff',
-          blue: '#0066ff',
+        // Secondary accent — warm champagne / sand (classic navy pairing)
+        cream: {
+          50: '#fdfaf4',
+          100: '#f7efe1',
+          200: '#efe1c9',
+          300: '#e6cfa8',
+          400: '#d9b884',
+          500: '#b8945a',
         },
-        code: {
-          bg: '#0d1117',
-          bgLight: '#161b22',
-          border: '#30363d',
-          text: '#c9d1d9',
-          comment: '#8b949e',
-          keyword: '#ff7b72',
-          string: '#a5d6ff',
-          function: '#d2a8ff',
-          variable: '#ffa657',
+        // Cool, crisp light section tints (steel/mist)
+        mist: {
+          50: '#f5f8fd',
+          100: '#eaf1fb',
+          200: '#dbe7f6',
+          300: '#c3d6ee',
+        },
+        // Deep navy slate inks
+        ink: {
+          DEFAULT: '#0f172a',
+          soft: '#33415a',
+          muted: '#64748b',
         },
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'monospace'],
-        code: ['Source Code Pro', 'Courier New', 'monospace'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'sans-serif'],
+        hand: ['Caveat', 'ui-sans-serif', 'cursive'],
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'typing': 'typing 3.5s steps(40, end)',
-        'blink': 'blink 0.75s step-end infinite',
-        'matrix': 'matrix 20s linear infinite',
-        'scan': 'scan 8s linear infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'code-float': 'codeFloat 20s ease-in-out infinite',
+      borderRadius: {
+        '4xl': '2rem',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        typing: {
-          '0%': { width: '0' },
-          '100%': { width: '100%' },
-        },
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
-        matrix: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
-        scan: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.3)' },
-          '100%': { boxShadow: '0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3)' },
-        },
-        codeFloat: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '33%': { transform: 'translateY(-20px) rotate(2deg)' },
-          '66%': { transform: 'translateY(-10px) rotate(-2deg)' },
-        },
+      boxShadow: {
+        soft: '0 8px 30px -12px rgba(15, 23, 42, 0.14)',
+        'soft-lg': '0 24px 60px -20px rgba(15, 23, 42, 0.22)',
+        glow: '0 12px 40px -10px rgba(32, 73, 214, 0.45)',
       },
       backgroundImage: {
-        'grid-pattern': 'linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
-        'code-pattern': 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px)',
+        'hero-tint': 'linear-gradient(180deg, #ffffff 0%, #f7faff 55%, #eef3fb 100%)',
+        'accent-banner': 'linear-gradient(120deg, #e7eefb 0%, #eef3fb 40%, #f7efe1 100%)',
+        'accent-cta': 'linear-gradient(120deg, #1c348b 0%, #2049d6 50%, #3666ea 100%)',
       },
-      backgroundSize: {
-        'grid': '40px 40px',
-        'code': '100% 4px',
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-18px)' },
+        },
+        'pulse-slow': {
+          '0%, 100%': { opacity: '0.5' },
+          '50%': { opacity: '0.8' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both',
+        float: 'float 7s ease-in-out infinite',
+        'pulse-slow': 'pulse-slow 5s ease-in-out infinite',
       },
     },
   },
