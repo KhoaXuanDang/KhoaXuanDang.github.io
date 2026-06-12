@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-lavender-tint pt-32 pb-20 dark:bg-[#0d0a1a] dark:bg-none sm:pt-36 lg:pt-40 lg:pb-28"
+      className="relative overflow-hidden bg-hero-tint pt-32 pb-20 dark:bg-[#0a0f1d] dark:bg-none sm:pt-36 lg:pt-40 lg:pb-28"
     >
       {/* Soft gradient blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -115,7 +115,7 @@ const Hero = () => {
           >
             <div className="relative mx-auto h-[420px] w-full max-w-md sm:h-[480px] lg:h-[520px]">
               {/* Soft gradient halo behind the cutout */}
-              <div className="absolute bottom-8 left-1/2 h-60 w-60 -translate-x-1/2 animate-pulse-slow rounded-full bg-amethyst-cta opacity-25 blur-3xl sm:h-72 sm:w-72" />
+              <div className="absolute bottom-8 left-1/2 h-60 w-60 -translate-x-1/2 animate-pulse-slow rounded-full bg-accent-cta opacity-25 blur-3xl sm:h-72 sm:w-72" />
 
               {/* Portrait — transparent cutout (profile-photo.png); falls back to the existing photo */}
               <img

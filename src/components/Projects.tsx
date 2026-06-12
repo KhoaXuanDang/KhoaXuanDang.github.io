@@ -118,7 +118,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="bg-lavender-50 py-24 dark:bg-[#100c20]">
+    <section id="projects" className="bg-mist-50 py-24 dark:bg-[#0e1426]">
       <div className="container-px">
         <Reveal className="mx-auto mb-12 max-w-2xl text-center">
           <span className="eyebrow">Projects</span>

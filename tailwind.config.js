@@ -8,41 +8,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary accent — vibrant amethyst / electric purple
+        // Primary accent — refined navy / royal blue (suit vibe)
         primary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+          50: '#eef4ff',
+          100: '#dae6ff',
+          200: '#bcd2ff',
+          300: '#8eb3ff',
+          400: '#5b8af6',
+          500: '#3666ea',
+          600: '#2049d6',
+          700: '#1c3bb0',
+          800: '#1c348b',
+          900: '#1b2f6e',
+          950: '#121d44',
         },
-        // Secondary accent — soft warm cream / peach
+        // Secondary accent — warm champagne / sand (classic navy pairing)
         cream: {
-          50: '#fffaf4',
-          100: '#fff3e6',
-          200: '#ffe6cc',
-          300: '#fdd5ad',
-          400: '#fbbf8a',
-          500: '#f5a563',
+          50: '#fdfaf4',
+          100: '#f7efe1',
+          200: '#efe1c9',
+          300: '#e6cfa8',
+          400: '#d9b884',
+          500: '#b8945a',
         },
-        // Subtle lavender section tints
-        lavender: {
-          50: '#faf8ff',
-          100: '#f3eefe',
-          200: '#e9e1fd',
-          300: '#d9ccfb',
+        // Cool, crisp light section tints (steel/mist)
+        mist: {
+          50: '#f5f8fd',
+          100: '#eaf1fb',
+          200: '#dbe7f6',
+          300: '#c3d6ee',
         },
-        // Deep charcoal / slate inks
+        // Deep navy slate inks
         ink: {
-          DEFAULT: '#1e1b2e',
-          soft: '#4b4763',
-          muted: '#7c7892',
+          DEFAULT: '#0f172a',
+          soft: '#33415a',
+          muted: '#64748b',
         },
       },
       fontFamily: {
@@ -54,14 +54,14 @@ export default {
         '4xl': '2rem',
       },
       boxShadow: {
-        soft: '0 8px 30px -12px rgba(76, 29, 149, 0.12)',
-        'soft-lg': '0 24px 60px -20px rgba(76, 29, 149, 0.22)',
-        glow: '0 12px 40px -8px rgba(124, 58, 237, 0.45)',
+        soft: '0 8px 30px -12px rgba(15, 23, 42, 0.14)',
+        'soft-lg': '0 24px 60px -20px rgba(15, 23, 42, 0.22)',
+        glow: '0 12px 40px -10px rgba(32, 73, 214, 0.45)',
       },
       backgroundImage: {
-        'lavender-tint': 'linear-gradient(180deg, #ffffff 0%, #faf8ff 55%, #f3eefe 100%)',
-        'amethyst-banner': 'linear-gradient(120deg, #ede9fe 0%, #f3eefe 40%, #fff3e6 100%)',
-        'amethyst-cta': 'linear-gradient(120deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%)',
+        'hero-tint': 'linear-gradient(180deg, #ffffff 0%, #f7faff 55%, #eef3fb 100%)',
+        'accent-banner': 'linear-gradient(120deg, #e7eefb 0%, #eef3fb 40%, #f7efe1 100%)',
+        'accent-cta': 'linear-gradient(120deg, #1c348b 0%, #2049d6 50%, #3666ea 100%)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',

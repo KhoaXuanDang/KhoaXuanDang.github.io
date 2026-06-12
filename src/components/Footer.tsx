@@ -20,13 +20,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-lavender-50 dark:bg-[#100c20]">
+    <footer className="bg-mist-50 dark:bg-[#0e1426]">
       <div className="container-px py-16">
         <div className="grid gap-10 md:grid-cols-12">
           {/* Brand */}
           <div className="md:col-span-5">
             <a href="#home" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-amethyst-cta text-white shadow-glow">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-cta text-white shadow-glow">
                 <Sparkles size={18} />
               </span>
               <span className="font-display text-lg font-extrabold text-ink dark:text-white">

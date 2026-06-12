@@ -50,7 +50,7 @@ const EASE = [0.4, 0, 0.2, 1] as const
 
 const Skills = () => {
   return (
-    <section id="skills" className="bg-lavender-50 py-24 dark:bg-[#100c20]">
+    <section id="skills" className="bg-mist-50 py-24 dark:bg-[#0e1426]">
       <div className="container-px">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="eyebrow">Skills</span>

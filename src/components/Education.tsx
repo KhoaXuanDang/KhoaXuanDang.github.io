@@ -33,7 +33,7 @@ const relevantCourses = [
 
 const Education = () => {
   return (
-    <section id="education" className="bg-white py-24 dark:bg-[#0d0a1a]">
+    <section id="education" className="bg-white py-24 dark:bg-[#0a0f1d]">
       <div className="container-px">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="eyebrow">Education</span>

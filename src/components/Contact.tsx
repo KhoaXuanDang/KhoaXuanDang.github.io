@@ -43,10 +43,10 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="bg-white py-24 dark:bg-[#0d0a1a]">
+    <section id="contact" className="bg-white py-24 dark:bg-[#0a0f1d]">
       <div className="container-px">
         <Reveal>
-          <div className="overflow-hidden rounded-[2rem] bg-amethyst-banner p-8 shadow-soft dark:bg-white/[0.04] sm:p-12 lg:p-16">
+          <div className="overflow-hidden rounded-[2rem] bg-accent-banner p-8 shadow-soft dark:bg-white/[0.04] sm:p-12 lg:p-16">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <span className="eyebrow">Contact</span>
               <h2 className="mt-5 font-display text-4xl font-extrabold text-ink dark:text-white sm:text-5xl">

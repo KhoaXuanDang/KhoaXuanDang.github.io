@@ -50,7 +50,7 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
         <div className="flex h-[4.5rem] items-center justify-between py-3">
           {/* Logo */}
           <a href="#home" className="group flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-amethyst-cta text-white shadow-glow transition-transform duration-300 ease-smooth group-hover:scale-105">
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-cta text-white shadow-glow transition-transform duration-300 ease-smooth group-hover:scale-105">
               <Sparkles size={18} />
             </span>
             <span className="font-display text-lg font-extrabold text-ink dark:text-white">
