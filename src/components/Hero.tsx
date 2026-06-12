@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-lavender-tint pt-32 pb-20 dark:bg-[#0d0a1a] sm:pt-36 lg:pt-40 lg:pb-28"
+      className="relative overflow-hidden bg-lavender-tint pt-32 pb-20 dark:bg-[#0d0a1a] dark:bg-none sm:pt-36 lg:pt-40 lg:pb-28"
     >
       {/* Soft gradient blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -113,9 +113,9 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
           >
-            <div className="relative mx-auto h-[360px] w-full max-w-md sm:h-[440px] lg:h-[480px]">
+            <div className="relative mx-auto h-[420px] w-full max-w-md sm:h-[480px] lg:h-[520px]">
               {/* Soft gradient halo behind the cutout */}
-              <div className="absolute left-1/2 top-1/2 -z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-amethyst-cta opacity-25 blur-3xl sm:h-80 sm:w-80" />
+              <div className="absolute bottom-8 left-1/2 h-60 w-60 -translate-x-1/2 animate-pulse-slow rounded-full bg-amethyst-cta opacity-25 blur-3xl sm:h-72 sm:w-72" />
 
               {/* Portrait — transparent cutout (profile-photo.png); falls back to the existing photo */}
               <img
@@ -125,36 +125,40 @@ const Hero = () => {
                   if (!img.dataset.fallback) {
                     img.dataset.fallback = 'true'
                     img.src = '/profile-photo.jpg'
-                    img.classList.add('rounded-[2rem]', 'object-cover')
-                    img.classList.remove('object-contain')
+                    img.classList.add('rounded-[2rem]', 'object-cover', 'h-full', 'w-full')
+                    img.classList.remove('h-[90%]', 'w-auto', 'object-contain')
                   }
                 }}
                 alt="Khoa Xuan Dang"
-                className="relative z-10 mx-auto h-full w-full object-contain drop-shadow-2xl"
+                className="absolute bottom-0 left-1/2 z-10 h-[90%] w-auto max-w-full -translate-x-1/2 object-contain drop-shadow-2xl"
               />
 
               {/* Decorators (desktop only to avoid overlap on small screens) */}
-              <div className="pointer-events-none absolute inset-0 z-20 hidden font-bold text-ink dark:text-slate-100 lg:block">
-                <DoodleSparkle className="absolute left-2 top-1 text-primary-500" size={24} />
-                <DoodleSparkle className="absolute right-3 bottom-12 text-cream-400" size={15} />
+              <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
+                <DoodleSparkle className="absolute left-3 top-2 text-primary-500" size={24} />
+                <DoodleSparkle className="absolute right-7 top-32 text-cream-400" size={15} />
 
                 {/* Call me Khoa */}
-                <div className="absolute left-1 top-2 -rotate-6">
-                  <span className="font-hand text-[26px] leading-none">Call me Khoa</span>
-                  <DoodleArrow variant="down-right" className="ml-10 mt-1 h-10 w-12 text-primary-500" />
+                <div className="absolute left-0 top-3 -rotate-6">
+                  <span className="inline-block rounded-2xl bg-white/85 px-3 py-0.5 font-hand text-[27px] font-bold leading-tight text-ink shadow-soft backdrop-blur-sm dark:bg-white/15 dark:text-white">
+                    Call me Khoa
+                  </span>
+                  <DoodleArrow variant="down-right" className="ml-14 mt-1 h-10 w-12 text-primary-500" />
                 </div>
 
                 {/* Cloud & AI enthusiast */}
-                <div className="absolute right-2 top-12 flex flex-col items-end -rotate-2">
-                  <span className="font-hand text-[26px] leading-tight text-right">
+                <div className="absolute right-0 top-2 flex flex-col items-end -rotate-2">
+                  <span className="inline-block rounded-2xl bg-white/85 px-3 py-0.5 text-right font-hand text-[27px] font-bold leading-tight text-ink shadow-soft backdrop-blur-sm dark:bg-white/15 dark:text-white">
                     Cloud &amp; AI<br />enthusiast
                   </span>
                   <DoodleArrow variant="down-left" className="mr-2 mt-1 h-10 w-12 text-primary-500" />
                 </div>
 
                 {/* 1+ years exp */}
-                <div className="absolute bottom-14 left-1 flex items-center gap-1 -rotate-3">
-                  <span className="font-hand text-[26px] leading-none">1+ years exp</span>
+                <div className="absolute bottom-16 left-0 flex items-center gap-1 -rotate-3">
+                  <span className="inline-block rounded-2xl bg-white/85 px-3 py-0.5 font-hand text-[27px] font-bold leading-tight text-ink shadow-soft backdrop-blur-sm dark:bg-white/15 dark:text-white">
+                    1+ years exp
+                  </span>
                   <DoodleArrow variant="right" className="h-9 w-11 text-primary-500" />
                 </div>
               </div>
