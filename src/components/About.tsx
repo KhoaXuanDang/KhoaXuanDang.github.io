@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 
 const About = () => {
   const stats = [
-    { icon: Trophy, label: 'GPA', value: '3.893' },
+    { icon: Trophy, label: 'GPA', value: '3.897' },
     { icon: Code2, label: 'Experience', value: '1+ Years' },
     { icon: Zap, label: 'APIs Built', value: '50+' },
   ]

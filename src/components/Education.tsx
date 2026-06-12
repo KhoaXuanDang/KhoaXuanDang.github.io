@@ -7,7 +7,7 @@ const education = [
     degree: 'B.S. in Computer Science',
     location: 'Cincinnati, OH',
     period: 'Expected 05/2026',
-    gpa: '3.89',
+    gpa: '3.897',
     honors: "Dean's Lists",
   },
   {
