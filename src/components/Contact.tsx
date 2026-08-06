@@ -46,10 +46,10 @@ const Contact = () => {
     <section id="contact" className="bg-white py-24 dark:bg-[#0a0f1d]">
       <div className="container-px">
         <Reveal>
-          <div className="overflow-hidden rounded-[2rem] bg-accent-banner p-8 shadow-soft dark:bg-white/[0.04] sm:p-12 lg:p-16">
+          <div className="overflow-hidden rounded-[2rem] bg-accent-banner p-8 shadow-soft dark:border dark:border-white/10 dark:bg-[#101a30] dark:bg-none sm:p-12 lg:p-16">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <span className="eyebrow">Contact</span>
-              <h2 className="mt-5 font-display text-4xl font-extrabold text-ink dark:text-white sm:text-5xl">
+              <h2 className="mt-5 font-display text-4xl font-extrabold text-ink dark:text-slate-100 sm:text-5xl">
                 Let&apos;s build something amazing together
               </h2>
             </div>
@@ -63,7 +63,7 @@ const Contact = () => {
                     href={info.link}
                     target={info.link.startsWith('http') ? '_blank' : undefined}
                     rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="card card-hover flex items-center gap-4 p-5"
+                    className="card card-hover flex items-center gap-4 p-5 dark:bg-white/[0.06] dark:hover:bg-white/[0.09]"
                   >
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300">
                       <info.icon size={22} />
@@ -72,12 +72,12 @@ const Contact = () => {
                       <div className="text-xs font-medium uppercase tracking-wide text-ink-muted dark:text-slate-400">
                         {info.label}
                       </div>
-                      <div className="font-semibold text-ink dark:text-white">{info.value}</div>
+                      <div className="font-semibold text-ink dark:text-slate-100">{info.value}</div>
                     </div>
                   </a>
                 ))}
 
-                <div className="card p-6">
+                <div className="card p-6 dark:bg-white/[0.06]">
                   <h4 className="font-display text-lg font-bold text-primary-600 dark:text-primary-400">
                     Open to Opportunities
                   </h4>
@@ -89,7 +89,7 @@ const Contact = () => {
               </div>
 
               {/* Form */}
-              <div className="card p-7 sm:p-8">
+              <div className="card p-7 dark:bg-[#0d1629] sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label htmlFor="name" className="mb-2 block text-sm font-medium text-ink-soft dark:text-slate-300">
